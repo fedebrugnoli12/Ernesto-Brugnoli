@@ -1243,7 +1243,6 @@ body {
 /* =========================================================
    RESPONSIVE - TABLET
 ========================================================= */
-
 @media (max-width: 900px) {
 
     .nav__menu {
@@ -1256,19 +1255,25 @@ body {
         top: 0;
         left: 0;
 
-        z-index: 100;
+        z-index: 1000;
 
         width: 100%;
-        height: 100%;
+        height: 100vh;
 
         margin: 0;
+        padding: 80px 20px 30px;
 
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+
+        justify-content: flex-start;
         align-items: center;
 
+        gap: 22px;
+
         background: #102f46;
+
+        overflow-y: auto;
 
         opacity: 0;
 
@@ -1285,6 +1290,26 @@ body {
         pointer-events: unset;
     }
 
+    .nav__items {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .nav__links {
+        display: block;
+
+        width: 100%;
+
+        padding: 8px 0;
+
+        color: #fff;
+
+        font-size: 18px;
+
+        text-decoration: none;
+    }
+
     .nav__close {
         position: absolute;
 
@@ -1295,6 +1320,9 @@ body {
 
         cursor: pointer;
     }
+
+
+    /* RECONOCIMIENTO */
 
     .knowledge__container {
         grid-template-columns: 1fr;
@@ -1311,6 +1339,9 @@ body {
 
         width: 80%;
     }
+
+
+    /* INVESTIGACIONES */
 
     .testimony__container {
         grid-template-columns: 35px 1fr 35px;
@@ -1329,6 +1360,9 @@ body {
         height: 200px;
     }
 
+
+    /* ENTREVISTA */
+
     .entrevista__contenido {
         grid-template-columns: 1fr;
     }
@@ -1338,9 +1372,15 @@ body {
         min-height: 350px;
     }
 
+
+    /* ERNESTO EN ACCIÓN */
+
     .slide-container {
         width: 90%;
     }
+
+
+    /* FOOTER */
 
     .footer__container {
         flex-wrap: wrap;
@@ -1364,6 +1404,9 @@ body {
         --padding-container: 70px 0;
     }
 
+
+    /* HERO */
+
     .hero {
         min-height: 650px;
     }
@@ -1382,6 +1425,21 @@ body {
 
     .titulo {
         font-size: 1.9rem;
+    }
+
+
+    /* MENU */
+
+    .nav__link--menu {
+        padding-top: 75px;
+
+        gap: 18px;
+    }
+
+    .nav__links {
+        font-size: 17px;
+
+        padding: 6px 0;
     }
 
 

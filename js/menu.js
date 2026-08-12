@@ -75,17 +75,21 @@ linksMenu.forEach((link) => {
 
 function actualizarMenuActivo() {
 
-    const posicionActual = window.scrollY + 160;
+    const posicionActual = window.scrollY + 180;
 
     let seccionActiva = "#inicio";
 
 
     seccionesMenu.forEach((seccion) => {
 
-        const inicio = seccion.element.offsetTop;
+        // Posición REAL de la sección dentro de toda la página
+        const inicio =
+            seccion.element.getBoundingClientRect().top +
+            window.scrollY;
 
         const final =
-            inicio + seccion.element.offsetHeight;
+            inicio +
+            seccion.element.offsetHeight;
 
 
         if (
@@ -100,6 +104,21 @@ function actualizarMenuActivo() {
     });
 
 
+    // Si llegamos prácticamente al final de la página,
+    // marcamos Contacto
+    const llegoAlFinal =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 50;
+
+
+    if (llegoAlFinal) {
+
+        seccionActiva = "#contacto";
+
+    }
+
+
+    // Sacamos active de todos
     linksMenu.forEach((link) => {
 
         link.classList.remove("active");
@@ -107,6 +126,7 @@ function actualizarMenuActivo() {
     });
 
 
+    // Buscamos el correspondiente
     const activo = document.querySelector(
         `.hero .nav__links[href="${seccionActiva}"]`
     );

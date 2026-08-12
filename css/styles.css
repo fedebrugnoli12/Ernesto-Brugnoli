@@ -65,13 +65,16 @@ body {
 .hero {
     width: 100%;
     height: 100vh;
-    min-height: 600px;
+
+    min-height: 650px;
     max-height: 800px;
 
     position: relative;
 
-    display: grid;
-    grid-template-rows: 100px 1fr;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 
     color: #fff;
 }
@@ -106,70 +109,167 @@ body {
 
 
 /* =========================================================
-   MENÚ
+   MENÚ FIJO
 ========================================================= */
-
-.nav {
+.hero > .nav {
     --padding-container: 0;
 
-    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 1000;
+
+    /* MÁS ANCHO */
+    width: calc(100% - 40px);
+    max-width: 1360px;
+
+    height: 80px;
+
+    padding: 0 18px;
 
     display: flex;
     align-items: center;
+
+    gap: 18px;
+
+    background: rgba(8, 39, 52, .80);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, .10);
+    border-top: none;
+
+    border-radius: 0 0 20px 20px;
+
+    box-shadow:
+        0 6px 25px rgba(0, 0, 0, .16);
+    overflow: visible;
 }
 
-.nav__title {
-    font-weight: 600;
+
+/* =========================================================
+   NOMBRE
+========================================================= */
+
+.hero .nav__logo {
+    flex-shrink: 0;
+}
+.hero .nav__title {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    letter-spacing: .2px;
 }
 
-.nav__link {
+/* =========================================================
+   LISTA DE LINKS
+========================================================= */
+.hero .nav__link {
     margin-left: auto;
-    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
+    padding: 5px;
 
-    gap: 2em;
+    display: flex;
+    align-items: center;
+
+    gap: 1px;
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, .05);
 }
 
-.nav__items {
+/* =========================================================
+   ITEMS
+========================================================= */
+
+.hero .nav__items {
     list-style: none;
 }
 
-.nav__links {
-    position: relative;
 
-    color: #fff;
+/* =========================================================
+   LINKS NORMALES
+========================================================= */
+
+.hero .nav__links {
+    display: block;
+
+    padding: 9px 9px;
+
+    border-radius: 30px;
+
+    color: rgba(255, 255, 255, .88);
+
+    font-size: .79rem;
+    font-weight: 500;
+
     text-decoration: none;
 
-    transition: color .3s ease;
+    white-space: nowrap;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
 }
 
-.nav__links::after {
-    content: "";
+/* Sacamos la línea inferior vieja */
 
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-
-    width: 0;
-    height: 2px;
-
-    background: var(--color-primary);
-
-    transition: width .3s ease;
+.hero .nav__links::after {
+    display: none;
 }
 
-.nav__links:hover {
-    color: var(--color-primary);
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.hero .nav__links:hover {
+    color: #fff;
+
+    background: rgba(255, 255, 255, .12);
+
+    transform: translateY(-1px);
 }
 
-.nav__links:hover::after {
-    width: 100%;
+
+/* =========================================================
+   SECCIÓN ACTIVA
+========================================================= */
+
+.hero .nav__links.active {
+    background: #fff;
+
+    color: #174d70;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, .15);
+
+    transform: translateY(-1px);
 }
 
-.nav__menu {
+
+/* =========================================================
+   MENU HAMBURGUESA
+========================================================= */
+
+.hero .nav__menu {
     margin-left: auto;
 
     cursor: pointer;
@@ -177,51 +277,317 @@ body {
     display: none;
 }
 
-.nav__img {
+.hero .nav__img {
     display: block;
+
     width: 30px;
 }
 
-.nav__close {
+.hero .nav__close {
     display: var(--show, none);
 }
 
 
 /* =========================================================
+   EVITAR QUE EL MENÚ TAPE LAS SECCIONES
+========================================================= */
+
+section[id],
+header[id] {
+    scroll-margin-top: 100px;
+}
+
+/* =========================================================
+   NOTEBOOK / PANTALLA MEDIANA
+========================================================= */
+
+/* =========================================================
+   TABLET / CELULAR - MENÚ HAMBURGUESA
+========================================================= */
+
+@media (max-width: 1150px) {
+
+    .hero > .nav {
+        width: calc(100% - 30px);
+        height: 75px;
+
+        padding: 0 18px;
+
+        justify-content: space-between;
+    }
+
+
+    /* MOSTRAR BOTÓN HAMBURGUESA */
+
+    .hero .nav__menu {
+        display: block;
+
+        position: relative;
+
+        z-index: 1300;
+
+        cursor: pointer;
+    }
+
+
+    .hero .nav__img {
+        display: block;
+
+        width: 30px;
+        height: 30px;
+    }
+
+
+    /* =====================================================
+       MENÚ OCULTO
+    ===================================================== */
+
+    .hero .nav__link--menu {
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        z-index: 1200;
+
+        width: 100vw;
+        height: 100vh;
+
+        margin: 0;
+
+        padding: 100px 25px 40px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: flex-start;
+
+        gap: 10px;
+
+        background: rgba(8, 39, 52, .98);
+
+        border-radius: 0;
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transform: translateY(-20px);
+
+        transition:
+            opacity .35s ease,
+            visibility .35s ease,
+            transform .35s ease;
+    }
+
+
+    /* =====================================================
+       MENÚ ABIERTO
+    ===================================================== */
+
+    .hero .nav__link--menu.nav__link--show {
+
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transform: translateY(0);
+    }
+
+
+    /* =====================================================
+       ELEMENTOS
+    ===================================================== */
+
+    .hero .nav__items {
+
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    .hero .nav__links {
+
+        width: 100%;
+        max-width: 340px;
+
+        margin: 0;
+
+        padding: 12px 20px;
+
+        border-radius: 30px;
+
+        color: #fff;
+
+        font-size: 1rem;
+
+        text-align: center;
+    }
+
+
+    /* LINK ACTIVO */
+
+    .hero .nav__links.active {
+
+        background: #fff;
+
+        color: #174d70;
+
+        font-weight: 700;
+    }
+
+
+    /* =====================================================
+       BOTÓN CERRAR
+    ===================================================== */
+
+    .hero .nav__close {
+
+        display: block;
+
+        position: absolute;
+
+        top: 25px;
+        right: 25px;
+
+        width: 32px;
+        height: 32px;
+
+        cursor: pointer;
+    }
+
+
+    /* Evita scroll de fondo */
+
+    body.menu-abierto {
+
+        overflow: hidden;
+    }
+}
+/* =========================================================
+   CELULAR
+========================================================= */
+@media (max-width: 600px) {
+
+    .hero > .nav {
+
+        width: calc(100% - 20px);
+
+        height: 70px;
+
+        padding: 0 15px;
+
+        border-radius: 0 0 16px 16px;
+    }
+
+
+    .hero .nav__title {
+
+        font-size: 1.15rem;
+    }
+
+
+    .hero .nav__img {
+
+        width: 27px;
+        height: 27px;
+    }
+
+
+    .hero .nav__link--menu {
+
+        padding:
+            90px 20px
+            30px;
+    }
+
+
+    .hero .nav__links {
+
+        font-size: .95rem;
+
+        padding: 11px 15px;
+    }
+
+
+    section[id],
+    header[id] {
+
+        scroll-margin-top: 85px;
+    }
+}
+/* =========================================================
    HERO - TEXTO
 ========================================================= */
 
 .hero__container {
-    max-width: 850px;
+    position: relative;
 
-    --padding-container: 0;
+    z-index: 2;
 
-    display: grid;
-    grid-auto-rows: max-content;
+    width: 90%;
+    max-width: 900px;
 
-    align-content: center;
+    margin: 0 auto;
 
-    gap: 1em;
+    padding: 80px 0 120px;
 
-    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 22px;
 
     text-align: center;
 }
-
 .hero__title {
+    margin: 0;
+
+    color: #fff;
+
     font-size: 3.5rem;
     line-height: 1.1;
 
-    margin: 0;
+    font-weight: 700;
 
-    text-shadow: 0 5px 25px rgba(0, 0, 0, .25);
+    text-align: center;
+
+    text-shadow:
+        0 4px 20px rgba(0, 0, 0, .35);
 }
 
+
 .hero__paragraph {
-    margin-bottom: 20px;
+    max-width: 900px;
+
+    margin: 0;
+
+    color: #fff;
 
     font-size: 1.15rem;
     line-height: 1.8;
+
+    text-align: center;
+
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, .45);
 }
 
 
@@ -1245,83 +1611,6 @@ body {
 ========================================================= */
 @media (max-width: 900px) {
 
-    .nav__menu {
-        display: block;
-    }
-
-    .nav__link--menu {
-        position: fixed;
-
-        top: 0;
-        left: 0;
-
-        z-index: 1000;
-
-        width: 100%;
-        height: 100vh;
-
-        margin: 0;
-        padding: 80px 20px 30px;
-
-        display: flex;
-        flex-direction: column;
-
-        justify-content: flex-start;
-        align-items: center;
-
-        gap: 22px;
-
-        background: #102f46;
-
-        overflow-y: auto;
-
-        opacity: 0;
-
-        pointer-events: none;
-
-        transition: opacity .5s ease;
-    }
-
-    .nav__link--show {
-        --show: block;
-
-        opacity: 1;
-
-        pointer-events: unset;
-    }
-
-    .nav__items {
-        width: 100%;
-
-        text-align: center;
-    }
-
-    .nav__links {
-        display: block;
-
-        width: 100%;
-
-        padding: 8px 0;
-
-        color: #fff;
-
-        font-size: 18px;
-
-        text-decoration: none;
-    }
-
-    .nav__close {
-        position: absolute;
-
-        top: 30px;
-        right: 30px;
-
-        width: 30px;
-
-        cursor: pointer;
-    }
-
-
     /* RECONOCIMIENTO */
 
     .knowledge__container {
@@ -1428,20 +1717,7 @@ body {
     }
 
 
-    /* MENU */
-
-    .nav__link--menu {
-        padding-top: 75px;
-
-        gap: 18px;
-    }
-
-    .nav__links {
-        font-size: 17px;
-
-        padding: 6px 0;
-    }
-
+    
 
     /* ÁREAS */
 

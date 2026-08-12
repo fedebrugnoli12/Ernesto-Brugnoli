@@ -45,6 +45,9 @@
                 <li class="nav__items">
                     <a href="#investigaciones" class="nav__links">Investigaciones</a>
                 </li>
+                <li class="nav__items">
+                    <a href="#publicaciones" class="nav__links">Publicaciones</a>
+                </li>
 
                 <li class="nav__items">
                     <a href="#entrevista" class="nav__links">Entrevista</a>
@@ -248,6 +251,89 @@
         </section>
         </section>
 
+        <section class="publications" id="publicaciones">
+            <div class="container publications__container">
+
+                <div class="publications__heading">
+                    <span class="publications__eyebrow">Producción académica</span>
+
+                    <h2 class="subtitle">
+                        Publicaciones científicas y capítulos de libro
+                    </h2>
+
+                    <p class="publications__intro">
+                        Una selección de trabajos publicados a lo largo de la carrera de Ernesto Brugnoli.
+                        Podés buscar por título y alternar entre publicaciones científicas y capítulos de libro.
+                    </p>
+                </div>
+
+                <div class="publications__stats" aria-label="Resumen de producción académica">
+
+                    <article class="publications__stat">
+                        <strong>73</strong>
+                        <span>Publicaciones</span>
+                    </article>
+
+                    <article class="publications__stat">
+                        <strong>20</strong>
+                        <span>Capítulos de libro</span>
+                    </article>
+
+                    <article class="publications__stat publications__stat--rg">
+                        <strong>ResearchGate</strong>
+                        <span>Perfil académico</span>
+                    </article>
+
+                </div>
+
+                <div class="publications__toolbar">
+
+                    <div class="publications__tabs" role="tablist" aria-label="Tipo de publicación">
+
+                        <button class="publications__tab publications__tab--active" type="button" data-filter="article">
+                            Publicaciones
+                        </button>
+
+                        <button class="publications__tab" type="button" data-filter="chapter">
+                            Capítulos de libro
+                        </button>
+
+                    </div>
+
+                    <label class="publications__search">
+
+                        <span class="publications__search-icon">⌕</span>
+
+                        <input id="publicationSearch" type="search" placeholder="Buscar por título..."
+                            autocomplete="off">
+
+                    </label>
+
+                </div>
+
+                <div id="publicationsList" class="publications__list" aria-live="polite"></div>
+
+                <p id="publicationsEmpty" class="publications__empty" hidden>
+                    No se encontraron resultados con esa búsqueda.
+                </p>
+
+                <div class="publications__footer">
+
+                    <p>
+                        Consultá el perfil académico para acceder a la colección completa,
+                        resúmenes y textos disponibles.
+                    </p>
+
+                    <a class="publications__button" href="https://www.researchgate.net/profile/Ernesto-Brugnoli"
+                        target="_blank" rel="noopener noreferrer">
+                        Ver perfil completo en ResearchGate
+                        <span aria-hidden="true">↗</span>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
 
         <!-- ============================= -->
         <!-- ENTREVISTA -->
@@ -324,7 +410,8 @@
                                         </h3>
                                         <div class="questions__show">
                                             <p>
-                                                2009-2016: Doctor en Ciencias Biológicas. PEDECIBA-Biología (Opción
+                                                2009-2016: Doctor en Ciencias Biológicas. PEDECIBA-Biología Grado 4
+                                                (Opción
                                                 Ecología), Universidad de la República. Tesis: “Indicadores ambientales
                                                 y ecológicos de los ambientes pelágicos y bentónicos de la costa de
                                                 Montevideo durante el evento ENOS 2009-2010”. 160p.
@@ -568,6 +655,7 @@
     <script src="./js/slider.js"></script>
     <script src="./js/questions.js"></script>
     <script src="./js/menu.js"></script>
+    <script src="./js/publicaciones.js"></script>
 </body>
 
 </html>
